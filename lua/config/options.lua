@@ -8,6 +8,9 @@ local g = vim.g
 vim.g.lazyvim_python_lsp = "pyright"
 
 local options = {
-    matchparen = true,
-    showmatch = true,
+  matchparen = true,
+  showmatch = true,
 }
+
+vim.diagnostic.disable()
+
