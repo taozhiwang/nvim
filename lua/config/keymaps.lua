@@ -6,4 +6,4 @@
 vim.keymap.set("i", "jj", "<ESC>", { noremap = true, silent = true, desc = "<ESC>" })
 
 -- use <C-S-s> to save file
-vim.keymap.set({ "i", "x", "n", "s" }, "<C-S-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
+vim.keymap.set({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
