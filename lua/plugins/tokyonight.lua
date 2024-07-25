@@ -13,7 +13,6 @@ return {
     -- Change the "hint" color to the "orange" color, and make the "error" color bright red
     on_colors = function(colors)
       colors.suggestion = colors.pink
-      colors.bg_statusline = colors.bg_alt
     end,
   }),
 }
