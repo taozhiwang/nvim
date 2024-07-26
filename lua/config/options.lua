@@ -13,4 +13,3 @@ local options = {
 }
 
 vim.diagnostic.disable()
-

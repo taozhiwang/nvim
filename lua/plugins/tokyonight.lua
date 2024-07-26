@@ -15,5 +15,6 @@ return {
       colors.suggestion = colors.pink
       colors.selected = colors.pink
     end,
+    on_highlights = function(highlights) end,
   }),
 }
