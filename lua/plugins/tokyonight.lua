@@ -1,7 +1,22 @@
 return {
   "folke/tokyonight.nvim",
   lazy = true,
-  opts = { style = "moon" },
+  opts = {
+    transparent = true,
+    style = "moon", -- TODO
+
+    styles = {
+      sidebars = "transparent",
+      floats = "transparent",
+    },
+    on_colors = function(colors)
+      colors.suggestion = colors.pink
+      colors.selected = colors.pink
+    end,
+    on_highlights = function(highlights)
+      highlights.suggestion = { fg = highlights.pink }
+    end,
+  },
 
   require("tokyonight").setup({
     -- use the night style
@@ -15,6 +30,8 @@ return {
       colors.suggestion = colors.pink
       colors.selected = colors.pink
     end,
-    on_highlights = function(highlights) end,
+    on_highlights = function(highlights)
+      highlights.suggestion = { fg = highlights.pink }
+    end,
   }),
 }
