@@ -16,3 +16,6 @@ vim.diagnostic.disable()
 
 local opt = vim.opt
 opt.wrap = true
+
+vim.b.autoformat = false
+vim.g.autoformat = false
