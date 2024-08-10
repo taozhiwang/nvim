@@ -6,7 +6,7 @@
 vim.keymap.set("i", "jj", "<ESC>", { noremap = true, silent = true, desc = "<ESC>" })
 
 -- use <D-s> to save file
-vim.keymap.set({ "i", "x", "n", "s" }, "<D-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
+vim.keymap.set({ "i", "x", "n", "s" }, "<D-s>", "<cmd>w<cr>", { desc = "Save file" })
 
 -- use <C-z> to undo
 vim.keymap.set({ "i" }, "<C-z>", "<cmd>undo<cr>", { desc = "Undo" })
