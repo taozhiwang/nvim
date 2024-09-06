@@ -13,3 +13,6 @@ vim.keymap.set({ "t" }, "<C-`>", "<C-\\><C-n>", { desc = "Exit terminal" })
 
 -- Use <C-a> to select all in all modes
 vim.keymap.set({ "n", "v", "i", "x" }, "<C-a>", "<cmd>normal! ggVG<cr>", { desc = "Select all" })
+
+-- Press s and s to save in all modes
+-- vim.keymap.set({ "n", "v", "i", "x" }, "ss", "<cmd>write<cr>", { desc = "Save" })
