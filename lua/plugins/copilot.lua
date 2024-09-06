@@ -19,9 +19,13 @@ return {
         auto_trigger = true,
         keymap = {
           accept = "<Tab>",
+          prev = "<D-[>",
+          next = "<D-]>",
+          dismiss = "<C-e>",
         },
       },
       panel = {
+        auto_refresh = false,
         enabled = true,
       },
       filetypes = {
