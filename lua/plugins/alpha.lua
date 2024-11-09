@@ -12,7 +12,7 @@ return {
                   ╚██╗ ██╔╝██║██║╚██╔╝██║ z         
                    ╚████╔╝ ██║██║ ╚═╝ ██║
                     ╚═══╝  ╚═╝╚═╝     ╚═╝
-	                     [ @taozhiwang ]
+	                     [ taozhiwang ]
     ]]
 
     dashboard.section.header.val = vim.split(logo, "\n")
