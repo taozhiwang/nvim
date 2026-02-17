@@ -1,0 +1,1 @@
+- automatically create jump point before active editor changes
