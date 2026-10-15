@@ -1,27 +1,30 @@
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
+local map = vim.keymap.set
+
+-- System clipboard (explicit, works even if 'clipboard' changes)
+map({ "n", "x" }, "<leader>y", '"+y', { desc = "Yank to System Clipboard" })
+map("n", "<leader>Y", '"+y$', { desc = "Yank to EOL to System Clipboard" })
+map("n", "<leader>p", '"+p', { desc = "Paste from System Clipboard" })
+-- Visual P replaces the selection without overwriting the register
+map("x", "<leader>p", '"+P', { desc = "Paste from System Clipboard" })
 
 if vim.g.vscode then
-  -- Add your keymaps here
   require("vs.vscode_keymaps")
-  vim.g.did_load_filetypes = 1
-  
-  return {}
+  return
 end
 
 -- exit insert mode with jj
-vim.keymap.set("i", "jj", "<ESC>", { noremap = true, silent = true, desc = "<ESC>" })
+map("i", "jj", "<Esc>", { desc = "Exit Insert Mode" })
 
--- use <C-`> to open toggle terminal
-vim.keymap.set({ "n" }, "<C-`>", "<cmd>ToggleTerm<cr>", { desc = "Open terminal" })
+-- <C-`> toggles a terminal; inside it, <C-`> goes back to normal mode
+map("n", "<C-`>", function()
+  Snacks.terminal()
+end, { desc = "Terminal" })
+map("t", "<C-`>", "<C-\\><C-n>", { desc = "Exit Terminal Mode" })
 
--- use <C-`> to exit toggle terminal when in terminal mode
-vim.keymap.set({ "t" }, "<C-`>", "<C-\\><C-n>", { desc = "Exit terminal" })
+-- Select all
+map({ "n", "x", "i" }, "<C-a>", "<Esc>ggVG", { desc = "Select All" })
 
--- Use <C-a> to select all in all modes
-vim.keymap.set({ "n", "v", "i", "x" }, "<C-a>", "<cmd>normal! ggVG<cr>", { desc = "Select all" })
-
--- Use Command + s to save in all modes
-vim.keymap.set({ "n", "v", "i", "x" }, "<Esc>fs", ":w<cr>", { desc = "Save" })
-
+-- Save is LazyVim's <C-s>. The old `<Esc>fs` map made every <Esc> wait 'timeoutlen'.
