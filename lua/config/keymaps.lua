@@ -15,8 +15,9 @@ if vim.g.vscode then
   return
 end
 
--- exit insert mode with jj
-map("i", "jj", "<Esc>", { desc = "Exit Insert Mode" })
+-- exit insert mode with jk or kj (same as Cursor's compositeKeys)
+map("i", "jk", "<Esc>", { desc = "Exit Insert Mode" })
+map("i", "kj", "<Esc>", { desc = "Exit Insert Mode" })
 
 -- <C-`> toggles a terminal; inside it, <C-`> goes back to normal mode
 map("n", "<C-`>", function()
