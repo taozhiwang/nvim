@@ -5,11 +5,14 @@ local opt = vim.opt
 
 vim.g.lazyvim_python_lsp = "pyright"
 vim.g.lazyvim_picker = "snacks"
-vim.g.lazyvim_explorer = "snacks"
+vim.g.lazyvim_explorer = "neo-tree"
 
 -- Never reformat on save: protects Obsidian notes from prettier/markdownlint rewrites.
 -- Format manually with <leader>cf when needed.
 vim.g.autoformat = false
+
+-- Auto completion starts off; <leader>uk turns it on or off (config/keymaps.lua)
+vim.g.completion = false
 
 if vim.g.vscode then
   -- <Space> opens VSCode's which-key (see lua/vs/vscode_keymaps.lua). Moving Neovim's leader off <Space>

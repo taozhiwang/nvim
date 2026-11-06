@@ -29,3 +29,20 @@ map("t", "<C-`>", "<C-\\><C-n>", { desc = "Exit Terminal Mode" })
 map({ "n", "x", "i" }, "<C-a>", "<Esc>ggVG", { desc = "Select All" })
 
 -- Save is LazyVim's <C-s>. The old `<Esc>fs` map made every <Esc> wait 'timeoutlen'.
+
+-- <leader>f finds files directly (lua/plugins/editor.lua), so drop LazyVim's remaining <leader>f… maps.
+-- New file is :enew; terminals are <C-/> and <C-`>.
+for _, lhs in ipairs({ "<leader>fn", "<leader>ft", "<leader>fT" }) do
+  pcall(vim.keymap.del, "n", lhs)
+end
+
+-- Auto completion is off by default (vim.g.completion in options.lua)
+Snacks.toggle({
+  name = "Auto Completion",
+  get = function()
+    return vim.g.completion == true
+  end,
+  set = function(state)
+    vim.g.completion = state
+  end,
+}):map("<leader>uk")

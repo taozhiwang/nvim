@@ -11,3 +11,14 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.list = false
   end,
 })
+
+-- Reload files that AI tools change while they are open. LazyVim already checks on focus;
+-- this also checks when entering a buffer and after the cursor rests ('updatetime').
+vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold" }, {
+  group = vim.api.nvim_create_augroup("user_checktime", { clear = true }),
+  callback = function()
+    if vim.o.buftype == "" and vim.fn.mode() ~= "c" then
+      vim.cmd("checktime")
+    end
+  end,
+})

@@ -27,4 +27,39 @@ return {
       image = { enabled = true },
     },
   },
+
+  -- Always show the open file(s) at the top, even with a single buffer
+  {
+    "akinsho/bufferline.nvim",
+    opts = { options = { always_show_bufferline = true } },
+  },
+
+  -- Borders around hover docs and signature help
+  {
+    "folke/noice.nvim",
+    opts = { presets = { lsp_doc_border = true } },
+  },
+
+  -- Scrollbar with marks for git changes and diagnostics: shows where in a long file the AI edited
+  {
+    "petertriho/nvim-scrollbar",
+    event = "LazyFile",
+    opts = {
+      hide_if_all_visible = true,
+      excluded_filetypes = {
+        "neo-tree",
+        "snacks_dashboard",
+        "snacks_picker_input",
+        "snacks_picker_list",
+        "lazy",
+        "mason",
+        "noice",
+        "prompt",
+      },
+      handlers = { gitsigns = true },
+    },
+  },
+
+  -- Color matching brackets by nesting depth (it lazy-loads itself; the README says not to lazy-load it)
+  { "HiPhish/rainbow-delimiters.nvim" },
 }
