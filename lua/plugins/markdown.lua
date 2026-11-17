@@ -74,6 +74,8 @@ return {
       end,
       daily_notes = {
         folder = "Daily Note",
+        -- Same as the app's .obsidian/daily-notes.json: Daily Note/2026/11/2026-11-16.md
+        date_format = "YYYY/MM/YYYY-MM-DD",
         template = "Daily.md",
         default_tags = {},
       },
