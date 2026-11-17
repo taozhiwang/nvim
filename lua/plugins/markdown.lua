@@ -51,6 +51,10 @@ return {
       vim.api.nvim_create_autocmd("User", {
         pattern = "ObsidianNoteEnter",
         callback = function(ev)
+          -- 'linebreak' only breaks at ASCII spaces/punctuation, so a Chinese paragraph with one
+          -- English word wraps early and leaves half a line empty. Notes are mostly Chinese, so wrap
+          -- them at the window edge like Obsidian does; README files elsewhere keep word wrapping.
+          vim.opt_local.linebreak = false
           vim.schedule(function()
             if vim.api.nvim_buf_is_valid(ev.buf) then
               expand_templater_dates(ev.buf)
@@ -91,6 +95,15 @@ return {
     "MeanderingProgrammer/render-markdown.nvim",
     opts = {
       preset = "obsidian",
+      heading = {
+        -- A terminal can't draw bigger text, so mark the levels instead: level icons in place of
+        -- '#' (LazyVim blanks them), and a bar above and below H1/H2 so they stand out like titles
+        icons = { "󰲡 ", "󰲣 ", "󰲥 ", "󰲧 ", "󰲩 ", "󰲫 " },
+        border = { true, true, false },
+        width = "block",
+        left_pad = 1,
+        right_pad = 4,
+      },
       checkbox = { enabled = true },
       -- LaTeX needs extra tools; the vault barely uses math
       latex = { enabled = false },

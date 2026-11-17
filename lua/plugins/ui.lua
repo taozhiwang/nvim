@@ -25,6 +25,17 @@ return {
       dashboard = { preset = { header = table.concat(logo_lines, "\n") } },
       -- Inline images in markdown (Ghostty speaks the kitty graphics protocol; not available inside zellij)
       image = { enabled = true },
+      -- <leader>uz (zen) doubles as reading mode: a centered column without line numbers or dimming.
+      -- Notes get a book-like width (about 40 Chinese characters per line); code keeps 120.
+      zen = {
+        toggles = { dim = false, git_signs = false, mini_diff_signs = false },
+        win = {
+          width = function()
+            return vim.bo.filetype == "markdown" and 90 or 120
+          end,
+          wo = { number = false, relativenumber = false, signcolumn = "no", statuscolumn = "" },
+        },
+      },
     },
   },
 
